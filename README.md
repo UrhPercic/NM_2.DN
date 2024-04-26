@@ -18,7 +18,7 @@ Projekt omogoča implementacijo metode baricentrične interpolacije za numeričn
 
 ## Uporaba kode
 - Zgradite projekt z Maven: `mvn clean install`
-- Zaženite glavni razred:: `java -cp target/classes org.example.Interpolation`
+- Zaženite glavni razred: `java -cp target/classes org.example.Interpolation`
 
 ## Poganjanje testov
 - Za izvedbo testov uporabite Maven: `mvn test`
