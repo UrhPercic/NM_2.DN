@@ -7,7 +7,6 @@
 ## Opis
 Projekt omogoča implementacijo metode baricentrične interpolacije za numerične izračune z uporabo Čebiševljevih točk. Glavni cilj je omogočiti izračun interpoliranih vrednosti za funkcijo, ki jo določi uporabnik, z uporabo učinkovite metode polinomske interpolacije.
 
-##Značilnosti
 - Generiranje Čebiševljevih točk.
 - Izračun interpoliranih vrednosti z uporabo baricentrične formule.
 - Enote testov za preverjanje natančnosti in funkcionalnosti interpolacije.
