@@ -35,10 +35,10 @@ public class Interpolation {
         generateChebyshevPoints(n, a, b, x, weights);
 
         for (int i = 0; i <= n; i++) {
-            y[i] = Math.exp(-x[i] * x[i]);
+            y[i] = Math.sin(x[i]) / x[i];
         }
 
-        double point = 0.5;
+        double point = Math.PI / 4;
         double interpolatedValue = barycentricInterpolate(x, y, weights, point);
 
         System.out.println("Interpolated value at x = " + point + " is: " + interpolatedValue);
