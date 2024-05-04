@@ -32,7 +32,6 @@ public class test {
         double eval(double x);
     }
 
-
     public test() {
         generateChebyshevPointsAndWeights();
     }
@@ -50,29 +49,26 @@ public class test {
     }
 
     @Test
-    public void testBarycentricInterpolate() {
-        int n = 10;
-        double[] x = new double[n + 1];
-        double[] y = new double[n + 1];
-        double[] weights = new double[n + 1];
-        double a = -1;
-        double b = 1;
+    public void testSineXFunction() {
+        FunctionEvaluator sineXEvaluator = (xi) -> (xi == 0 ? 1 : Math.sin(xi) / xi);
+        double[] y = evaluateFunction(sineXEvaluator);
 
-
-        Interpolation.generateChebyshevPoints(n, a, b, x, weights);
-
-
-        for (int i = 0; i <= n; i++) {
-            y[i] = Math.exp(-x[i] * x[i]);
-        }
-
-
-        double point = 0.5;
-        double expectedResult = Math.exp(-point * point);
+        double point = Math.PI;
+        double expectedResult = sineXEvaluator.eval(point);
         double interpolatedValue = Interpolation.barycentricInterpolate(x, y, weights, point);
 
+        assertEquals(expectedResult, interpolatedValue, delta, "Sine x/x function interpolation failed at x = " + point);
+    }
 
-        double delta = 0.01;
-        assertEquals(expectedResult, interpolatedValue, delta, "The interpolated value should be close to the actual function value.");
+    @Test
+    public void testPolynomialFunction() {
+        FunctionEvaluator polynomialEvaluator = (xi) -> Math.abs(xi * xi - 2 * xi);
+        double[] y = evaluateFunction(polynomialEvaluator);
+
+        double point = 0.0;
+        double expectedResult = polynomialEvaluator.eval(point);
+        double interpolatedValue = Interpolation.barycentricInterpolate(x, y, weights, point);
+
+        assertEquals(expectedResult, interpolatedValue, delta, "Polynomial function |x^2 - 2x| interpolation failed at x = " + point);
     }
 }
