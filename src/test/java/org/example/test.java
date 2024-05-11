@@ -50,11 +50,13 @@ public class test {
 
     @Test
     public void testSineXFunction() {
-        FunctionEvaluator sineXEvaluator = (xi) -> (xi == 0 ? 1 : Math.sin(xi) / xi);
-        double[] y = evaluateFunction(sineXEvaluator);
+        double[] y = new double[n + 1];
+        for (int i = 0; i <= n; i++) {
+            y[i] = (x[i] == 0 ? 1 : Math.sin(x[i]) / x[i]);
+        }
 
-        double point = Math.PI;
-        double expectedResult = sineXEvaluator.eval(point);
+        double point = Math.PI;  // Testing direct computation
+        double expectedResult = Math.sin(point) / point;
         double interpolatedValue = Interpolation.barycentricInterpolate(x, y, weights, point);
 
         assertEquals(expectedResult, interpolatedValue, delta, "Sine x/x function interpolation failed at x = " + point);
