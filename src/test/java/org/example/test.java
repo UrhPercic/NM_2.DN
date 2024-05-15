@@ -73,4 +73,14 @@ public class test {
 
         assertEquals(expectedResult, interpolatedValue, delta, "Polynomial function |x^2 - 2x| interpolation failed at x = " + point);
     }
+
+    @Test
+    public void testQuantileFunction() {
+        double p = 0.975;
+        double expectedResult = 1.959964;
+        double calculatedQuantile = QuantileCalculator.findQuantile(p);
+        double delta = 0.00001;
+
+        assertEquals(expectedResult, calculatedQuantile, delta, "Quantile function calculation failed for p = " + p);
+    }
 }
